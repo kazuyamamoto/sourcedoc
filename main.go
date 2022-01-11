@@ -29,6 +29,12 @@ func main() {
 	}
 }
 
+var functions = template.FuncMap{
+	"makeSlice": func(args ...string) []string {
+		return args
+	},
+}
+
 func expand(w io.Writer, r io.Reader) error {
 	bs, err := io.ReadAll(r)
 	if err != nil {
@@ -36,6 +42,8 @@ func expand(w io.Writer, r io.Reader) error {
 	}
 
 	tpl := template.New("foo")
+	tpl.Funcs(functions)
+
 	tpl, err = tpl.Parse(string(bs))
 	if err != nil {
 		return err
