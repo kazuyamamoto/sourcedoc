@@ -10,3 +10,4 @@ sourcedoc template output
 Reads a template file then outputs expanded text into a file.
 
 ## Extended functions
+- makeSlice: makes a slice of string arguments like `{{makeSlice "foo" "bar" "baz"}}`.
